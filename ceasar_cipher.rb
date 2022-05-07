@@ -2,29 +2,45 @@ alphabetArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 
 #Cipher
 #First get the input string of the text to cipher
-def getInput
-  puts "Please enter the message you wish to cipher: "
-  p input_message = gets.gsub("\n", "")
+def get_message_input
+  puts "Please enter the message you wish to cipher\nOnly letters accepted: "
+  gets.gsub("\n", "").downcase
 end
 
-# input_message = getInput.gsub("\n", "")
 # p input_message
-def isInputValid?(input)
-  input.each_char do |c|
+def is_input_message_only_letters?(message_input)
+  message_input.each_char do |c|
     if !c.match?(/[[:alpha:]]/)
       p "\'#{c}' is not a letter.., please enter message again: "
-      getInput
+      get_message_input
     end
   end
 end
 
-isInputValid?(getInput)
+message = get_message_input()
+
 # p input_message
 
 #Then get the input of the key, make into an int
+def get_key_input
+  puts "Please enter the key\nOnly number accepted: "
+  p input_key = gets.to_i
+end
+key = get_key_input
+
 #Take every character in input string and shift it by the number of the key
 #x steps up in the alphabet
-#Print ciphered message
+
+def cipher_message?(message_input, key_input, alphabet)
+  ciphered_message = ""
+  message_input.each_char do |c|
+    i = alphabet.index {|l| l == c}
+    ciphered_message += alphabet[i+key_input]
+    end
+  return ciphered_message
+end
+# Print ciphered message
+p cipher_message?(message, key, alphabetArray)
 
 
 
