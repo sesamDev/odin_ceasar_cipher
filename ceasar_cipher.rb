@@ -13,7 +13,7 @@ def isInputValid?(input)
   input.each_char do |c|
     if !c.match?(/[[:alpha:]]/)
       p "\'#{c}' is not a letter.., please enter message again: "
-      input_message = getInput
+      getInput
     end
   end
 end
